@@ -38,6 +38,8 @@ select{margin-left:auto;border:1px solid var(--line);background:var(--card);colo
 .acts button{flex:1;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:8px;font:600 14px "Golos Text",sans-serif;cursor:pointer}
 .acts .take.on{background:var(--acc);color:var(--accink);border-color:var(--acc)}
 .acts .skip.on{background:var(--bad);color:#fff;border-color:var(--bad)}
+.acts .later.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.acts button{padding:8px 4px}
 .empty{color:var(--mute);padding:40px 0;text-align:center}
 details{margin-top:40px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
 summary{font:700 22px Oswald,sans-serif;text-transform:uppercase;cursor:pointer}
@@ -59,6 +61,7 @@ form button{border:0;background:var(--acc);color:var(--accink);border-radius:8px
   <div class="bar">
     <button class="chip on" data-f="new">Новые</button>
     <button class="chip" data-f="all">Все</button>
+    <button class="chip" data-f="later">Позже</button>
     <button class="chip" data-f="used">Беру</button>
     <button class="chip" data-f="skip">Не то</button>
     <select id="sort">
@@ -97,8 +100,9 @@ const issue = title => window.open(`https://github.com/${REPO}/issues/new?title=
 function render() {
   const all = Object.entries(refs);
   const nNew = all.filter(([c, r]) => status(c, r) === "new").length;
+  const nLater = all.filter(([c, r]) => status(c, r) === "later").length;
   document.getElementById("stats").innerHTML =
-    `<span>новых <b>${nNew}</b></span><span>всего <b>${all.length}</b></span>` +
+    `<span>новых <b>${nNew}</b></span><span>отложено <b>${nLater}</b></span><span>всего <b>${all.length}</b></span>` +
     `<span>авторов <b>${Object.keys(authors).length}</b></span><span>прогон <b>${date(state.lastRun)}</b></span>` +
     (state.note ? `<span>${esc(state.note)}</span>` : "");
   const by = document.getElementById("sort").value;
@@ -117,6 +121,7 @@ function render() {
         <div class="tags">${(r.tricks || []).map(t => `<span>${esc(t)}</span>`).join("")}</div>
         <div class="acts">
           <button class="take ${st === "used" ? "on" : ""}" data-c="${c}" data-s="used">Беру</button>
+          <button class="later ${st === "later" ? "on" : ""}" data-c="${c}" data-s="later">Позже</button>
           <button class="skip ${st === "skip" ? "on" : ""}" data-c="${c}" data-s="skip">Не то</button>
         </div>
       </div></article>`;
