@@ -1,0 +1,39 @@
+name: radar
+on:
+  schedule:
+    - cron: "0 7 */2 * *"   # раз в 2 дня, 10:00 по Москве
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: radar
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: Прогон
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python radar.py ${{ github.event_name == 'issues' && '--authors-only' || '' }}
+      - name: Сохранить результаты
+        run: |
+          git config user.name "radar-bot"
+          git config user.email "radar-bot@users.noreply.github.com"
+          git add data covers 2>/dev/null || git add data
+          git diff --cached --quiet || git commit -m "Прогон радара $(date -u +%F)"
+          git pull --rebase && git push

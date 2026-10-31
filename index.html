@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Радар референсов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Golos+Text:wght@400;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f2ec;--card:#fff;--ink:#141414;--mute:#6b6b6b;--line:#dcd8cc;--acc:#ffd400;--accink:#141414;--bad:#d9412b}
+@media (prefers-color-scheme:dark){:root{--bg:#0f0f10;--card:#19191b;--ink:#f1f1f1;--mute:#9a9a9a;--line:#2c2c30;--acc:#ffd400;--accink:#141414;--bad:#ff6b55}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 "Golos Text",system-ui,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 16px 64px}
+h1{font:700 clamp(32px,6vw,56px)/1 Oswald,sans-serif;text-transform:uppercase;margin:0}
+h1 span{background:var(--acc);color:var(--accink);padding:0 .15em}
+.stats{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0 20px;font:500 13px "JetBrains Mono",monospace;color:var(--mute)}
+.stats b{color:var(--ink)}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:7px 14px;font:inherit;cursor:pointer}
+.chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+select{margin-left:auto;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:7px 10px;font:inherit}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.frame{position:relative;aspect-ratio:9/16;max-height:360px;background:#222 center/cover no-repeat;display:flex;align-items:flex-end;justify-content:center;padding:14px;text-decoration:none}
+.frame::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,.75))}
+.hook{position:relative;color:#fff;font:700 20px/1.15 Oswald,sans-serif;text-transform:uppercase;text-align:center;text-shadow:0 2px 6px #000}
+.hook em{font-style:normal;color:var(--acc)}
+.score{position:absolute;top:10px;left:10px;background:var(--acc);color:var(--accink);font:700 18px Oswald,sans-serif;border-radius:8px;padding:2px 9px}
+.badge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.6);color:#fff;font:500 11px "JetBrains Mono",monospace;border-radius:6px;padding:3px 7px}
+.body{padding:12px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.meta{font:500 12px "JetBrains Mono",monospace;color:var(--mute);display:flex;justify-content:space-between;gap:8px}
+.meta a{color:inherit}
+.why{margin:0;font-size:14px}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tags span{font-size:12px;border:1px solid var(--line);border-radius:6px;padding:2px 7px;color:var(--mute)}
+.acts{display:flex;gap:8px;margin-top:auto;padding-top:4px}
+.acts button{flex:1;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:8px;font:600 14px "Golos Text",sans-serif;cursor:pointer}
+.acts .take.on{background:var(--acc);color:var(--accink);border-color:var(--acc)}
+.acts .skip.on{background:var(--bad);color:#fff;border-color:var(--bad)}
+.empty{color:var(--mute);padding:40px 0;text-align:center}
+details{margin-top:40px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+summary{font:700 22px Oswald,sans-serif;text-transform:uppercase;cursor:pointer}
+.authors{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;margin:14px 0}
+.au{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:14px}
+.au a{color:var(--ink);font-weight:600;text-decoration:none;flex:1;overflow:hidden;text-overflow:ellipsis}
+.au small{color:var(--mute);font:500 11px "JetBrains Mono",monospace}
+.au button{border:0;background:transparent;color:var(--mute);cursor:pointer;font-size:16px}
+form{display:flex;gap:8px;flex-wrap:wrap}
+form input{flex:1;min-width:200px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:9px 12px;font:inherit}
+form button{border:0;background:var(--acc);color:var(--accink);border-radius:8px;padding:9px 16px;font:600 14px "Golos Text",sans-serif;cursor:pointer}
+.hint{color:var(--mute);font-size:13px;margin:8px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Радар <span>референсов</span></h1>
+  <div class="stats" id="stats">загрузка…</div>
+  <div class="bar">
+    <button class="chip on" data-f="new">Новые</button>
+    <button class="chip" data-f="all">Все</button>
+    <button class="chip" data-f="used">Беру</button>
+    <button class="chip" data-f="skip">Не то</button>
+    <select id="sort">
+      <option value="score">По оценке</option>
+      <option value="found">Сначала свежие</option>
+      <option value="views">По просмотрам</option>
+    </select>
+  </div>
+  <div class="grid" id="grid"></div>
+
+  <details>
+    <summary>Авторы</summary>
+    <p class="hint">«Кандидат» — ещё не проверен вами. ✕ убирает автора из радара (откроется заявка на GitHub — нажмите там «Create»).</p>
+    <div class="authors" id="authors"></div>
+    <form id="add">
+      <input id="handle" placeholder="instagram.com/ник или @ник" autocomplete="off">
+      <button>Добавить автора</button>
+    </form>
+    <p class="hint">Откроется заявка на GitHub — нажмите «Create». Автор добавится за минуту, рилсы появятся после ближайшего прогона.</p>
+  </details>
+</div>
+<script>
+const REPO = "amatarashi/reels-radar";
+const KEY = "radar-marks";
+let refs = {}, authors = {}, state = {}, filter = "new";
+let marks = {};
+try { marks = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch {}
+const saveMarks = () => { try { localStorage.setItem(KEY, JSON.stringify(marks)); } catch {} };
+const status = (c, r) => marks[c] || r.status || "new";
+const esc = s => String(s ?? "").replace(/[&<>"]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
+const hook = s => esc(s).replace(/\*(.+?)\*/g, "<em>$1</em>");
+const num = n => !n ? "—" : n >= 1e6 ? (n/1e6).toFixed(1).replace(".0","") + "M" : n >= 1e3 ? Math.round(n/1e3) + "k" : n;
+const date = s => s ? new Date(s).toLocaleString("ru-RU", {day:"numeric", month:"short", hour:"2-digit", minute:"2-digit"}) : "ещё не было";
+const issue = title => window.open(`https://github.com/${REPO}/issues/new?title=${encodeURIComponent(title)}`, "_blank");
+
+function render() {
+  const all = Object.entries(refs);
+  const nNew = all.filter(([c, r]) => status(c, r) === "new").length;
+  document.getElementById("stats").innerHTML =
+    `<span>новых <b>${nNew}</b></span><span>всего <b>${all.length}</b></span>` +
+    `<span>авторов <b>${Object.keys(authors).length}</b></span><span>прогон <b>${date(state.lastRun)}</b></span>` +
+    (state.note ? `<span>${esc(state.note)}</span>` : "");
+  const by = document.getElementById("sort").value;
+  const list = all.filter(([c, r]) => filter === "all" || status(c, r) === filter)
+    .sort((a, b) => by === "found" ? (b[1].found || "").localeCompare(a[1].found || "")
+      : by === "views" ? (b[1].views || 0) - (a[1].views || 0) : b[1].score - a[1].score);
+  document.getElementById("grid").innerHTML = list.length ? list.map(([c, r]) => {
+    const st = status(c, r);
+    return `<article class="card">
+      <a class="frame" href="${esc(r.url)}" target="_blank" rel="noopener" style="${r.cover ? `background-image:url('${esc(r.cover)}')` : ""}">
+        <span class="score">${r.score}</span>${r.duration ? `<span class="badge">${r.duration} с</span>` : ""}
+        <span class="hook">${hook(r.hook)}</span></a>
+      <div class="body">
+        <div class="meta"><a href="https://www.instagram.com/${esc(r.author)}/" target="_blank" rel="noopener">@${esc(r.author)}</a><span>👁 ${num(r.views)}</span></div>
+        <p class="why">${esc(r.why)}</p>
+        <div class="tags">${(r.tricks || []).map(t => `<span>${esc(t)}</span>`).join("")}</div>
+        <div class="acts">
+          <button class="take ${st === "used" ? "on" : ""}" data-c="${c}" data-s="used">Беру</button>
+          <button class="skip ${st === "skip" ? "on" : ""}" data-c="${c}" data-s="skip">Не то</button>
+        </div>
+      </div></article>`;
+  }).join("") : `<div class="empty">Здесь пока пусто</div>`;
+
+  document.getElementById("authors").innerHTML = Object.entries(authors)
+    .sort((a, b) => (b[1].best || 0) - (a[1].best || 0))
+    .map(([h, a]) => `<div class="au"><a href="https://www.instagram.com/${esc(h)}/" target="_blank" rel="noopener">@${esc(h)}</a>
+      <small>${a.from === "кандидат" ? "кандидат" : ""}${a.best ? " ★" + a.best : ""}${a.hits ? " · " + a.hits : ""}</small>
+      <button title="Убрать" data-rm="${esc(h)}">✕</button></div>`).join("");
+}
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  if (b.dataset.f) {
+    filter = b.dataset.f;
+    document.querySelectorAll(".chip").forEach(x => x.classList.toggle("on", x === b));
+    render();
+  } else if (b.dataset.c) {
+    const c = b.dataset.c;
+    marks[c] = status(c, refs[c]) === b.dataset.s ? "new" : b.dataset.s;
+    saveMarks(); render();
+  } else if (b.dataset.rm) {
+    issue("Убрать: " + b.dataset.rm);
+  }
+});
+document.getElementById("sort").onchange = render;
+document.getElementById("add").onsubmit = e => {
+  e.preventDefault();
+  const v = document.getElementById("handle").value.trim();
+  const m = v.match(/instagram\.com\/([A-Za-z0-9._]{2,30})/) || v.match(/^@?([A-Za-z0-9._]{2,30})$/);
+  if (!m) { alert("Не понял ник. Вставьте ссылку на профиль или @ник."); return; }
+  issue("Автор: " + m[1].toLowerCase());
+  document.getElementById("handle").value = "";
+};
+
+const get = n => fetch(`data/${n}.json?t=${Date.now()}`).then(r => r.ok ? r.json() : {}).catch(() => ({}));
+Promise.all([get("refs"), get("authors"), get("state")]).then(([r, a, s]) => { refs = r; authors = a; state = s; render(); });
+</script>
+</body>
+</html>
