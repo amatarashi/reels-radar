@@ -21,12 +21,12 @@ GH_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 REPO = os.environ.get("GITHUB_REPOSITORY", "")
 
 REELS_PER_AUTHOR = 4        # сколько последних рилсов брать у автора за прогон
-NEW_AUTHOR_REELS = 8        # у нового автора берём больше, чтобы понять его средние просмотры
+NEW_AUTHOR_REELS = 5        # у нового автора берём больше, чтобы понять его средние просмотры
 MAX_SCORED_PER_RUN = 150    # потолок оценок Gemini за прогон (бесплатный лимит)
 MIN_SCORE = 5               # ниже — в таблицу не попадает
 BUDGET_STOP_USD = 4.3       # бесплатно $5 в месяц — останавливаемся чуть раньше
 MAX_VIDEO_BYTES = 14_000_000
-MODELS = ["gemini-3.5-flash", "gemini-3.8-flash", "gemini-flash-latest"]
+MODELS = ["gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-3.8-flash"]
 
 
 def now():
@@ -132,16 +132,26 @@ PROMPT = STYLE + """
 
 def gemini(parts):
     body = {"contents": [{"parts": parts}],
-            "generationConfig": {"responseMimeType": "application/json", "temperature": 0.2}}
+            "generationConfig": {"responseMimeType": "application/json", "temperature": 0.2,
+                                 "mediaResolution": "MEDIA_RESOLUTION_LOW"}}
     for attempt in range(6):
-        model = MODELS[min(attempt // 2, len(MODELS) - 1)]
-        r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-                          headers={"x-goog-api-key": GEMINI}, json=body, timeout=180)
+        model = MODELS[attempt % len(MODELS)]
+        try:
+            r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                              headers={"x-goog-api-key": GEMINI}, json=body, timeout=240)
+        except requests.RequestException as e:
+            print(f"Gemini {model}: {e!r}", file=sys.stderr)
+            continue
         if r.ok:
-            text = r.json()["candidates"][0]["content"]["parts"][-1]["text"]
-            return json.loads(text[text.find("{"): text.rfind("}") + 1])
+            try:
+                text = r.json()["candidates"][0]["content"]["parts"][-1]["text"]
+                return json.loads(text[text.find("{"): text.rfind("}") + 1])
+            except (KeyError, IndexError, ValueError):
+                print(f"Gemini {model}: непонятный ответ", file=sys.stderr)
+                continue
         print(f"Gemini {model}: {r.status_code}", file=sys.stderr)
-        time.sleep(10 * (attempt + 1))
+        # 429 — минутный лимит бесплатного тарифа, ждём, пока он сбросится
+        time.sleep(65 if r.status_code == 429 else 15)
     return None
 
 
@@ -217,9 +227,13 @@ def main():
             if code in seen or code in refs or scored >= MAX_SCORED_PER_RUN:
                 continue
             v = r.get("videoPlayCount") or r.get("videoViewCount") or 0
-            res = score_reel(r)
+            try:
+                res = score_reel(r)
+            except Exception as e:
+                print(f"{code}: {e!r}", file=sys.stderr)
+                res = None
             scored += 1
-            time.sleep(7)
+            time.sleep(15)
             if not res:
                 continue
             score = float(res.get("score", 0))
@@ -240,6 +254,9 @@ def main():
             }
             a["hits"] = a.get("hits", 0) + 1
             added += 1
+            save("refs.json", refs)
+        save("authors.json", authors)
+        save("seen.json", seen)
 
     for handle in fresh:
         if handle not in by_author:
