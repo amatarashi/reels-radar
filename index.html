@@ -74,7 +74,7 @@ form button{border:0;background:var(--acc);color:var(--accink);border-radius:8px
 
   <details>
     <summary>Авторы</summary>
-    <p class="hint">«Кандидат» — ещё не проверен вами. ✕ убирает автора из радара (откроется заявка на GitHub — нажмите там «Create»).</p>
+    <p class="hint">«Кандидат» — ещё не проверен вами. ✕ сразу убирает автора и его рилсы. Откроется заявка на GitHub — нажмите там «Create», чтобы радар перестал его проверять.</p>
     <div class="authors" id="authors"></div>
     <form id="add">
       <input id="handle" placeholder="instagram.com/ник или @ник" autocomplete="off">
@@ -90,6 +90,9 @@ let refs = {}, authors = {}, state = {}, filter = "new";
 let marks = {};
 try { marks = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch {}
 const saveMarks = () => { try { localStorage.setItem(KEY, JSON.stringify(marks)); } catch {} };
+let gone = [];
+try { gone = JSON.parse(localStorage.getItem("radar-gone") || "[]"); } catch {}
+const saveGone = () => { try { localStorage.setItem("radar-gone", JSON.stringify(gone)); } catch {} };
 const status = (c, r) => marks[c] || r.status || "new";
 const esc = s => String(s ?? "").replace(/[&<>"]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]));
 const hook = s => esc(s).replace(/\*(.+?)\*/g, "<em>$1</em>");
@@ -98,12 +101,12 @@ const date = s => s ? new Date(s).toLocaleString("ru-RU", {day:"numeric", month:
 const issue = title => window.open(`https://github.com/${REPO}/issues/new?title=${encodeURIComponent(title)}`, "_blank");
 
 function render() {
-  const all = Object.entries(refs);
+  const all = Object.entries(refs).filter(([c, r]) => !gone.includes(r.author));
   const nNew = all.filter(([c, r]) => status(c, r) === "new").length;
   const nLater = all.filter(([c, r]) => status(c, r) === "later").length;
   document.getElementById("stats").innerHTML =
     `<span>новых <b>${nNew}</b></span><span>отложено <b>${nLater}</b></span><span>всего <b>${all.length}</b></span>` +
-    `<span>авторов <b>${Object.keys(authors).length}</b></span><span>прогон <b>${date(state.lastRun)}</b></span>` +
+    `<span>авторов <b>${Object.keys(authors).filter(h => !gone.includes(h)).length}</b></span><span>прогон <b>${date(state.lastRun)}</b></span>` +
     (state.note ? `<span>${esc(state.note)}</span>` : "");
   const by = document.getElementById("sort").value;
   const list = all.filter(([c, r]) => filter === "all" || status(c, r) === filter)
@@ -127,7 +130,7 @@ function render() {
       </div></article>`;
   }).join("") : `<div class="empty">Здесь пока пусто</div>`;
 
-  document.getElementById("authors").innerHTML = Object.entries(authors)
+  document.getElementById("authors").innerHTML = Object.entries(authors).filter(([h]) => !gone.includes(h))
     .sort((a, b) => (b[1].best || 0) - (a[1].best || 0))
     .map(([h, a]) => `<div class="au"><a href="https://www.instagram.com/${esc(h)}/" target="_blank" rel="noopener">@${esc(h)}</a>
       <small>${a.from === "кандидат" ? "кандидат" : ""}${a.best ? " ★" + a.best : ""}${a.hits ? " · " + a.hits : ""}</small>
@@ -146,7 +149,10 @@ document.addEventListener("click", e => {
     marks[c] = status(c, refs[c]) === b.dataset.s ? "new" : b.dataset.s;
     saveMarks(); render();
   } else if (b.dataset.rm) {
-    issue("Убрать: " + b.dataset.rm);
+    const h = b.dataset.rm;
+    if (!confirm(`Убрать @${h} и все его рилсы?`)) return;
+    gone.push(h); saveGone(); render();
+    issue("Убрать: " + h);
   }
 });
 document.getElementById("sort").onchange = render;

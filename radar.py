@@ -57,8 +57,17 @@ def parse_handle(text):
     return m.group(1).lower().strip(".") if m else None
 
 
-def take_author_issues(authors):
-    """Заявки «Автор: …» из кнопки на странице. Добавляем автора и закрываем заявку."""
+def drop_author(handle, authors, refs):
+    """Убираем автора вместе с его рилсами и обложками."""
+    authors.pop(handle, None)
+    for code in [c for c, r in refs.items() if r.get("author") == handle]:
+        cover = refs.pop(code).get("cover")
+        if cover and (ROOT / cover).exists():
+            (ROOT / cover).unlink()
+
+
+def take_author_issues(authors, refs):
+    """Заявки «Автор: …» / «Убрать: …» из кнопок на странице. Выполняем и закрываем заявку."""
     if not (GH_TOKEN and REPO):
         return 0
     h = {"Authorization": f"Bearer {GH_TOKEN}", "Accept": "application/vnd.github+json"}
@@ -68,9 +77,9 @@ def take_author_issues(authors):
         title = issue.get("title", "")
         if title.lower().startswith(("убрать", "remove")):
             handle = parse_handle(title.split(":", 1)[-1])
-            if handle in authors:
-                del authors[handle]
-            requests.post(issue["comments_url"], headers=h, json={"body": f"Убрал @{handle}."}, timeout=30)
+            if handle:
+                drop_author(handle, authors, refs)
+            requests.post(issue["comments_url"], headers=h, json={"body": f"Убрал @{handle} и его рилсы."}, timeout=30)
             requests.patch(issue["url"], headers=h, json={"state": "closed"}, timeout=30)
             continue
         if not title.lower().startswith(("автор", "author")):
@@ -194,9 +203,10 @@ def main():
     seen = load("seen.json", {})
     state = load("state.json", {})
 
-    added_authors = take_author_issues(authors)
+    added_authors = take_author_issues(authors, refs)
     if "--authors-only" in sys.argv:
         save("authors.json", authors)
+        save("refs.json", refs)
         print(f"Новых авторов: {added_authors}")
         return
 
