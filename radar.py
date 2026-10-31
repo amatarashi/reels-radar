@@ -202,7 +202,11 @@ def main():
 
     usage = apify_usage()
     if usage >= BUDGET_STOP_USD:
-        state.update(lastRun=now(), note=f"Пауза: бесплатный лимит Apify почти исчерпан (${usage:.2f})")
+        # соавторы чужих рилсов попадают сюда сами — оставляем только тех, у кого нашлось что-то сильное
+    for handle in [h for h, v in authors.items() if v.get("from") == "найден" and (v.get("best") or 0) < 7]:
+        del authors[handle]
+
+    state.update(lastRun=now(), note=f"Пауза: бесплатный лимит Apify почти исчерпан (${usage:.2f})")
         save("state.json", state)
         print(state["note"])
         return
