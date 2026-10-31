@@ -21,8 +21,15 @@ GH_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 REPO = os.environ.get("GITHUB_REPOSITORY", "")
 
 REELS_PER_AUTHOR = 4        # сколько последних рилсов брать у автора за прогон
-NEW_AUTHOR_REELS = 5        # у нового автора берём больше, чтобы понять его средние просмотры
-MAX_SCORED_PER_RUN = 150    # потолок оценок Gemini за прогон (бесплатный лимит)
+NEW_AUTHOR_REELS = 12       # у нового автора берём больше, чтобы понять его средние просмотры
+DEEP_REELS = 24             # у сильного автора один раз проходим глубже по старым рилсам
+STRONG = 8                  # с какой лучшей оценки автор считается сильным
+FRESH_PER_RUN = 12          # сколько новых авторов проверять за прогон
+DEEP_PER_RUN = 5            # сколько сильных авторов проходить глубоко за прогон
+RELATED_PER_AUTHOR = 15     # сколько «похожих аккаунтов» брать у сильного автора
+KNOWN_EVERY_HOURS = 44      # известных авторов проверяем раз в ~2 дня, даже если прогон каждый день
+TARGET_REFS = 500           # пока в таблице меньше — режим набора, прогон каждый день
+MAX_SCORED_PER_RUN = 300    # потолок оценок Gemini за прогон (бесплатный лимит)
 MIN_SCORE = 5               # ниже — в таблицу не попадает
 BUDGET_STOP_USD = 4.3       # бесплатно $5 в месяц — останавливаемся чуть раньше
 MAX_VIDEO_BYTES = 14_000_000
@@ -31,6 +38,12 @@ MODELS = ["gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-3.8-flash"]
 
 def now():
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+def hours_since(stamp):
+    if not stamp:
+        return 1e9
+    return (datetime.now(timezone.utc) - datetime.fromisoformat(stamp)).total_seconds() / 3600
 
 
 def load(name, default):
@@ -57,16 +70,17 @@ def parse_handle(text):
     return m.group(1).lower().strip(".") if m else None
 
 
-def drop_author(handle, authors, refs):
-    """Убираем автора вместе с его рилсами и обложками."""
+def drop_author(handle, authors, refs, gone):
+    """Убираем автора вместе с его рилсами и обложками. В gone — чтобы поиск похожих не вернул его снова."""
     authors.pop(handle, None)
+    gone.add(handle)
     for code in [c for c, r in refs.items() if r.get("author") == handle]:
         cover = refs.pop(code).get("cover")
         if cover and (ROOT / cover).exists():
             (ROOT / cover).unlink()
 
 
-def take_author_issues(authors, refs):
+def take_author_issues(authors, refs, gone):
     """Заявки «Автор: …» / «Убрать: …» из кнопок на странице. Выполняем и закрываем заявку."""
     if not (GH_TOKEN and REPO):
         return 0
@@ -78,7 +92,7 @@ def take_author_issues(authors, refs):
         if title.lower().startswith(("убрать", "remove")):
             handle = parse_handle(title.split(":", 1)[-1])
             if handle:
-                drop_author(handle, authors, refs)
+                drop_author(handle, authors, refs, gone)
             requests.post(issue["comments_url"], headers=h, json={"body": f"Убрал @{handle} и его рилсы."}, timeout=30)
             requests.patch(issue["url"], headers=h, json={"state": "closed"}, timeout=30)
             continue
@@ -86,6 +100,7 @@ def take_author_issues(authors, refs):
             continue
         handle = parse_handle(title.split(":", 1)[-1] + " " + (issue.get("body") or ""))
         if handle and handle not in authors:
+            gone.discard(handle)
             authors[handle] = {"from": "добавлен через страницу", "added": now(), "hits": 0, "best": None}
             added += 1
             msg = f"Добавил @{handle}, проверю на следующем прогоне."
@@ -106,20 +121,34 @@ def apify_usage():
         return 0.0
 
 
-def apify_reels(handles, limit):
-    if not handles:
-        return []
+def apify_run(actor, payload):
     run = requests.post(
-        f"https://api.apify.com/v2/acts/apify~instagram-reel-scraper/runs?token={APIFY}&waitForFinish=60",
-        json={"username": handles, "resultsLimit": limit}, timeout=90).json()["data"]
+        f"https://api.apify.com/v2/acts/{actor}/runs?token={APIFY}&waitForFinish=60",
+        json=payload, timeout=90).json()["data"]
     while run["status"] in ("READY", "RUNNING"):
         time.sleep(15)
         run = requests.get(f"https://api.apify.com/v2/actor-runs/{run['id']}?token={APIFY}", timeout=30).json()["data"]
     if run["status"] != "SUCCEEDED":
         print("Apify:", run["status"], file=sys.stderr)
-    items = requests.get(
+    return requests.get(
         f"https://api.apify.com/v2/datasets/{run['defaultDatasetId']}/items?token={APIFY}&clean=true", timeout=60).json()
+
+
+def apify_reels(handles, limit):
+    if not handles:
+        return []
+    items = apify_run("apify~instagram-reel-scraper", {"username": handles, "resultsLimit": limit})
     return [i for i in items if i.get("shortCode") and not i.get("error")]
+
+
+def apify_related(handles):
+    """«Похожие аккаунты», которые Инстаграм показывает в профиле автора."""
+    if not handles:
+        return {}
+    items = apify_run("apify~instagram-profile-scraper", {"usernames": handles})
+    return {(i.get("username") or "").lower(): [p.get("username", "").lower() for p in i.get("relatedProfiles") or []
+                                                if p.get("username") and not p.get("is_private")]
+            for i in items if not i.get("error")}
 
 
 # ---------- Gemini ----------
@@ -202,11 +231,13 @@ def main():
     refs = load("refs.json", {})
     seen = load("seen.json", {})
     state = load("state.json", {})
+    gone = set(load("gone.json", []))
 
-    added_authors = take_author_issues(authors, refs)
+    added_authors = take_author_issues(authors, refs, gone)
     if "--authors-only" in sys.argv:
         save("authors.json", authors)
         save("refs.json", refs)
+        save("gone.json", sorted(gone))
         print(f"Новых авторов: {added_authors}")
         return
 
@@ -217,9 +248,29 @@ def main():
         print(state["note"])
         return
 
-    fresh = [a for a, v in authors.items() if not v.get("lastChecked")]
-    known = [a for a in authors if a not in fresh]
-    items = apify_reels(fresh, NEW_AUTHOR_REELS) + apify_reels(known, REELS_PER_AUTHOR)
+    # набрали TARGET_REFS — по расписанию дальше работаем раз в ~2 дня, как раньше
+    if (len(refs) >= TARGET_REFS and os.environ.get("GITHUB_EVENT_NAME") == "schedule"
+            and hours_since(state.get("lastRun")) < KNOWN_EVERY_HOURS):
+        print("Набор окончен, следующий прогон через день")
+        return
+
+    # у сильных авторов берём «похожие аккаунты» — так радар сам находит новых авторов в том же стиле
+    strong = [h for h, v in authors.items() if (v.get("best") or 0) >= STRONG and not v.get("expanded")]
+    for src, related in apify_related(strong).items():
+        for h in [h for h in related if h not in authors and h not in gone][:RELATED_PER_AUTHOR]:
+            authors[h] = {"from": f"похож на {src}", "added": now(), "hits": 0, "best": None}
+    for h in strong:
+        authors[h]["expanded"] = now()
+    save("authors.json", authors)
+
+    deep = [a for a, v in authors.items() if (v.get("best") or 0) >= STRONG and not v.get("deep")][:DEEP_PER_RUN]
+    fresh = [a for a, v in authors.items() if not v.get("lastChecked")][:FRESH_PER_RUN]
+    known = [a for a, v in authors.items() if a not in deep and v.get("lastChecked")
+             and hours_since(v["lastChecked"]) >= KNOWN_EVERY_HOURS]
+    items = (apify_reels(deep, DEEP_REELS) + apify_reels(fresh, NEW_AUTHOR_REELS)
+             + apify_reels(known, REELS_PER_AUTHOR))
+    for h in deep:
+        authors[h]["deep"] = now()
 
     by_author = {}
     for it in items:
@@ -227,6 +278,8 @@ def main():
 
     scored = added = 0
     for handle, reels in by_author.items():
+        if handle in gone:
+            continue
         a = authors.setdefault(handle, {"from": "найден", "added": now(), "hits": 0, "best": None})
         a["lastChecked"] = now()
         views = [r.get("videoPlayCount") or r.get("videoViewCount") or 0 for r in reels]
@@ -273,9 +326,12 @@ def main():
             authors[handle]["lastChecked"] = now()
             authors[handle]["note"] = "рилсы не найдены (закрыт или нет такого ника)"
 
-    # соавторы чужих рилсов попадают сюда сами — оставляем только тех, у кого нашлось что-то сильное
-    for handle in [h for h, v in authors.items() if v.get("from") == "найден" and (v.get("best") or 0) < 7]:
-        del authors[handle]
+    # найденные сами (соавторы, похожие) остаются, только если у них нашлось что-то сильное
+    for handle in [h for h, v in authors.items()
+                   if (v.get("from") == "найден" or v.get("from", "").startswith("похож"))
+                   and (v.get("note") or (v.get("best") is not None and v["best"] < 7))]:
+        authors.pop(handle)
+        gone.add(handle)
 
     state.update(lastRun=now(), checked=len(by_author), scored=scored, added=added,
                  apifyUsd=round(apify_usage(), 2), note="")
@@ -283,6 +339,7 @@ def main():
     save("refs.json", refs)
     save("seen.json", seen)
     save("state.json", state)
+    save("gone.json", sorted(gone))
     print(f"Авторов: {len(by_author)}, оценено: {scored}, добавлено: {added}, Apify ${state['apifyUsd']}")
 
 

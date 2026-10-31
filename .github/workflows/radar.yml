@@ -1,7 +1,7 @@
 name: radar
 on:
   schedule:
-    - cron: "0 7 */2 * *"   # раз в 2 дня, 10:00 по Москве
+    - cron: "0 7 * * *"   # каждый день в 10:00 по Москве; набрав 500 рилсов, скрипт сам переходит на раз в 2 дня
   workflow_dispatch:
   issues:
     types: [opened]
@@ -17,7 +17,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 330
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
