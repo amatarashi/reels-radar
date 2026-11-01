@@ -208,17 +208,42 @@
  "alexandramitroshina": {
   "from": "кандидат",
   "added": "2026-10-31T00:00:00+00:00",
-  "hits": 3,
+  "hits": 17,
   "best": 8.0,
-  "lastChecked": "2026-10-31T20:31:44+00:00",
+  "lastChecked": "2026-11-01T13:57:40+00:00",
   "views": [
+   242515,
+   271484,
    392725,
+   394486,
+   453220,
+   508036,
+   523499,
    530116,
+   530999,
    532039,
+   532930,
+   547193,
    582220,
-   1314135
+   584764,
+   600723,
+   608191,
+   632398,
+   669197,
+   695713,
+   715002,
+   759758,
+   960530,
+   1020864,
+   1192855,
+   1314135,
+   1335527,
+   1395631,
+   1409708,
+   2070275
   ],
-  "expanded": "2026-10-31T23:02:00+00:00"
+  "expanded": "2026-10-31T23:02:00+00:00",
+  "deep": "2026-11-01T13:57:40+00:00"
  },
  "naastyamor": {
   "from": "кандидат",
@@ -251,17 +276,42 @@
  "ne_slavik": {
   "from": "кандидат",
   "added": "2026-10-31T00:00:00+00:00",
-  "hits": 2,
+  "hits": 19,
   "best": 9.5,
-  "lastChecked": "2026-10-31T20:16:47+00:00",
+  "lastChecked": "2026-11-01T14:53:10+00:00",
   "views": [
    441,
    951,
+   1256,
+   1735,
+   2221,
+   2850,
+   3234,
+   3392,
+   3487,
+   4631,
+   6374,
+   12691,
+   13713,
+   19341,
+   24227,
+   32592,
+   35091,
+   41103,
+   41600,
+   55378,
+   66551,
+   104276,
+   237809,
    2194430,
+   2197742,
    2742035,
-   6465194
+   2742619,
+   6465194,
+   6465452
   ],
-  "expanded": "2026-10-31T23:02:00+00:00"
+  "expanded": "2026-10-31T23:02:00+00:00",
+  "deep": "2026-11-01T13:57:40+00:00"
  },
  "proshtova_": {
   "from": "кандидат",
@@ -280,17 +330,40 @@
  "dianapostika": {
   "from": "кандидат",
   "added": "2026-10-31T00:00:00+00:00",
-  "hits": 1,
-  "best": 8.5,
-  "lastChecked": "2026-10-31T20:51:39+00:00",
+  "hits": 4,
+  "best": 9.5,
+  "lastChecked": "2026-11-01T14:29:54+00:00",
   "views": [
+   540,
+   657,
+   2672,
+   3847,
+   4854,
+   5029,
    6427,
+   6467,
+   6647,
    6806,
+   6926,
+   7089,
+   7229,
+   7286,
+   7475,
    8088,
+   8089,
+   8158,
+   8237,
+   11484,
+   16607,
+   16655,
    22005,
-   3999632
+   22009,
+   231037,
+   3999632,
+   3999637
   ],
-  "expanded": "2026-10-31T23:02:00+00:00"
+  "expanded": "2026-10-31T23:02:00+00:00",
+  "deep": "2026-11-01T13:57:40+00:00"
  },
  "nebledny": {
   "from": "кандидат",
@@ -309,32 +382,80 @@
  "yanadlx": {
   "from": "кандидат",
   "added": "2026-10-31T00:00:00+00:00",
-  "hits": 3,
-  "best": 9.5,
-  "lastChecked": "2026-10-31T19:44:04+00:00",
+  "hits": 11,
+  "best": 10.0,
+  "lastChecked": "2026-11-01T15:25:29+00:00",
   "views": [
    62,
+   168,
+   176,
+   391,
+   776,
+   792,
+   1033,
+   1137,
    1652,
+   1686,
+   1733,
+   1753,
+   1802,
+   1814,
+   1946,
+   2531,
+   3077,
+   3272,
+   3448,
+   5058,
+   10544,
    124596,
+   124720,
    300551,
-   4749934
+   300785,
+   517678,
+   4749934,
+   4750287
   ],
-  "expanded": "2026-10-31T23:02:00+00:00"
+  "expanded": "2026-10-31T23:02:00+00:00",
+  "deep": "2026-11-01T13:57:40+00:00"
  },
  "katerina.vlog": {
   "from": "кандидат",
   "added": "2026-10-31T00:00:00+00:00",
-  "hits": 3,
+  "hits": 7,
   "best": 10.0,
-  "lastChecked": "2026-10-31T20:09:36+00:00",
+  "lastChecked": "2026-11-01T14:07:13+00:00",
   "views": [
+   113,
    157,
+   159,
    948,
+   979,
+   1049,
+   1130,
+   1282,
+   1462,
+   1654,
+   1750,
+   1803,
+   1989,
+   2264,
+   2441,
+   2645,
+   2701,
+   2753,
+   3569,
    7284,
+   7295,
+   10071,
+   16235,
+   36847,
    330717,
-   2683820
+   330725,
+   2683820,
+   2683839
   ],
-  "expanded": "2026-10-31T23:02:00+00:00"
+  "expanded": "2026-10-31T23:02:00+00:00",
+  "deep": "2026-11-01T13:57:40+00:00"
  },
  "moykamanas": {
   "from": "найден",
@@ -387,7 +508,8 @@
    3434,
    3925,
    67902
-  ]
+  ],
+  "expanded": "2026-11-01T13:55:58+00:00"
  },
  "frilanss.blog": {
   "from": "похож на ne_slavik",
@@ -408,7 +530,8 @@
    2893,
    3310,
    3801
-  ]
+  ],
+  "expanded": "2026-11-01T13:55:58+00:00"
  },
  "egoza_zhe": {
   "from": "похож на ne_slavik",
@@ -461,8 +584,23 @@
  "luba.profi": {
   "from": "похож на ne_slavik",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 0,
-  "best": null
+  "hits": 8,
+  "best": 9.5,
+  "lastChecked": "2026-11-01T18:56:14+00:00",
+  "views": [
+   48,
+   111,
+   143,
+   157,
+   159,
+   160,
+   171,
+   375,
+   1576,
+   1793,
+   2984,
+   6842
+  ]
  },
  "yana_bakara": {
   "from": "похож на ne_slavik",
@@ -483,7 +621,8 @@
    10885,
    12318,
    12605
-  ]
+  ],
+  "expanded": "2026-11-01T13:55:58+00:00"
  },
  "maru.tsybulevskaya": {
   "from": "похож на ne_slavik",
@@ -503,7 +642,8 @@
    893441,
    1351280,
    3072420
-  ]
+  ],
+  "expanded": "2026-11-01T13:55:58+00:00"
  },
  "anna.ievleva.buh": {
   "from": "похож на ne_slavik",
@@ -524,7 +664,8 @@
    1919,
    2250,
    2687
-  ]
+  ],
+  "expanded": "2026-11-01T13:55:58+00:00"
  },
  "malllkova": {
   "from": "похож на ne_slavik",
@@ -566,43 +707,131 @@
    3992,
    7257,
    78676
-  ]
+  ],
+  "expanded": "2026-11-01T13:55:58+00:00"
  },
  "_bozhinskaya": {
   "from": "похож на ne_slavik",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 0,
-  "best": null
+  "hits": 1,
+  "best": 9.5,
+  "lastChecked": "2026-11-01T18:38:00+00:00",
+  "views": [
+   0,
+   131,
+   140,
+   352,
+   607,
+   760,
+   1275,
+   1567,
+   2191,
+   14796,
+   235118,
+   701696
+  ]
  },
  "anna_dainty": {
   "from": "похож на ne_slavik",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 0,
-  "best": null
+  "hits": 3,
+  "best": 9.5,
+  "lastChecked": "2026-11-01T18:19:50+00:00",
+  "views": [
+   145,
+   244,
+   586,
+   1154,
+   1655,
+   4821,
+   54513,
+   103187,
+   212143
+  ]
  },
  "krista.lesnow": {
   "from": "похож на ne_slavik",
   "added": "2026-10-31T23:02:00+00:00",
   "hits": 0,
-  "best": null
+  "best": 3.0,
+  "lastChecked": "2026-11-01T16:10:33+00:00",
+  "views": [
+   128,
+   172,
+   173,
+   216,
+   479,
+   694,
+   1104,
+   1386,
+   1788,
+   3128,
+   8395,
+   18484
+  ]
  },
  "palishaaa": {
   "from": "похож на yanadlx",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 0,
-  "best": null
+  "hits": 6,
+  "best": 9.5,
+  "lastChecked": "2026-11-01T17:41:09+00:00",
+  "views": [
+   2493,
+   11023,
+   12927,
+   15635,
+   17661,
+   18078,
+   19647,
+   26776,
+   31230,
+   464233,
+   935262,
+   1257397
+  ]
  },
  "mirrena_": {
   "from": "похож на yanadlx",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 0,
-  "best": null
+  "hits": 5,
+  "best": 9.5,
+  "lastChecked": "2026-11-01T16:49:11+00:00",
+  "views": [
+   118,
+   2240,
+   6454,
+   7598,
+   8952,
+   9580,
+   20333,
+   21752,
+   31213,
+   354001,
+   410215,
+   700624
+  ]
  },
  "zametki.nasti": {
   "from": "похож на yanadlx",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 0,
-  "best": null
+  "hits": 7,
+  "best": 9.5,
+  "lastChecked": "2026-11-01T15:52:32+00:00",
+  "views": [
+   271,
+   1168,
+   1454,
+   2832,
+   4556,
+   5369,
+   5889,
+   6138,
+   7972,
+   9458,
+   17891,
+   178785
+  ]
  },
  "alisamelns": {
   "from": "похож на yanadlx",
@@ -613,20 +842,64 @@
  "s_golovoj": {
   "from": "похож на yanadlx",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 0,
-  "best": null
+  "hits": 9,
+  "best": 9.5,
+  "lastChecked": "2026-11-01T18:00:14+00:00",
+  "views": [
+   2138,
+   4345,
+   8231,
+   14058,
+   17133,
+   20311,
+   21782,
+   21847,
+   23694,
+   38077,
+   1081940,
+   1871955
+  ]
  },
  "sofie.vurgaft": {
   "from": "похож на yanadlx",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 0,
-  "best": null
+  "hits": 10,
+  "best": 9.5,
+  "lastChecked": "2026-11-01T17:11:54+00:00",
+  "views": [
+   62,
+   1945,
+   2736,
+   5274,
+   7506,
+   9470,
+   10029,
+   22726,
+   35326,
+   47485,
+   313697
+  ]
  },
  "lava.education": {
   "from": "похож на yanadlx",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 0,
-  "best": null
+  "hits": 5,
+  "best": 9.5,
+  "lastChecked": "2026-11-01T16:27:38+00:00",
+  "views": [
+   110,
+   1465,
+   1685,
+   2323,
+   2374,
+   4332,
+   4653,
+   4723,
+   6774,
+   8188,
+   8265,
+   47874
+  ]
  },
  "matu_9": {
   "from": "похож на yanadlx",
@@ -801,6 +1074,406 @@
   "lastChecked": "2026-11-01T01:56:42+00:00",
   "views": [
    1231
+  ]
+ },
+ "meri_poppinc": {
+  "from": "похож на pavlovairyna",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "tatyanka_ivanova": {
+  "from": "похож на pavlovairyna",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "yulu_vinnik": {
+  "from": "похож на pavlovairyna",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "permanent.kolesnikova": {
+  "from": "похож на pavlovairyna",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "n.nails.studio_": {
+  "from": "похож на pavlovairyna",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "magistr.kat": {
+  "from": "похож на pavlovairyna",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "nadezhda_psy": {
+  "from": "похож на pavlovairyna",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "impulse.festival": {
+  "from": "похож на pavlovairyna",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "maryia_akachonak": {
+  "from": "похож на pavlovairyna",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "hotel_slavyanskiy.by_polotsk": {
+  "from": "похож на pavlovairyna",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "jul_kulkina": {
+  "from": "похож на pavlovairyna",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "oksana_profitness": {
+  "from": "похож на pavlovairyna",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "art.choker": {
+  "from": "похож на pavlovairyna",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "fitness_s_di": {
+  "from": "похож на pavlovairyna",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "bublik.darya": {
+  "from": "похож на pavlovairyna",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "smart.buhgalter": {
+  "from": "похож на anna.ievleva.buh",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "irma_guchua": {
+  "from": "похож на anna.ievleva.buh",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "biznes_sidichenko": {
+  "from": "похож на anna.ievleva.buh",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "vasilieva.tattiana": {
+  "from": "похож на anna.ievleva.buh",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "tanyazhurkina": {
+  "from": "похож на anna.ievleva.buh",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "ndflconsult": {
+  "from": "похож на anna.ievleva.buh",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "buhg_help": {
+  "from": "похож на anna.ievleva.buh",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "school_taxfree": {
+  "from": "похож на anna.ievleva.buh",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "bondarenko.kru": {
+  "from": "похож на anna.ievleva.buh",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "vakhrusheva_buh": {
+  "from": "похож на anna.ievleva.buh",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "tvoi_yurist_": {
+  "from": "похож на anna.ievleva.buh",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "faudix.ru": {
+  "from": "похож на anna.ievleva.buh",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "iuliia_starostina": {
+  "from": "похож на anna.ievleva.buh",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "greynasty": {
+  "from": "похож на anna.ievleva.buh",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "nesterova.nadejda": {
+  "from": "похож на anna.ievleva.buh",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "hrybok_katya": {
+  "from": "похож на maru.tsybulevskaya",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "volk.ksu": {
+  "from": "похож на maru.tsybulevskaya",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "dm_linee": {
+  "from": "похож на maru.tsybulevskaya",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "lilly__may": {
+  "from": "похож на maru.tsybulevskaya",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "tatyana.darm": {
+  "from": "похож на maru.tsybulevskaya",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "vasilissa_knyazeva": {
+  "from": "похож на maru.tsybulevskaya",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "dreams_of_lilac": {
+  "from": "похож на maru.tsybulevskaya",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "ulyanalnozemtseva": {
+  "from": "похож на maru.tsybulevskaya",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "fedorlen": {
+  "from": "похож на maru.tsybulevskaya",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "lazareva_aalena": {
+  "from": "похож на maru.tsybulevskaya",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "valeriya_petikyan": {
+  "from": "похож на maru.tsybulevskaya",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "mood.of.ksushaa": {
+  "from": "похож на maru.tsybulevskaya",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "obukhovaleria": {
+  "from": "похож на maru.tsybulevskaya",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "krowka_zubkova": {
+  "from": "похож на maru.tsybulevskaya",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "darya_rodivilova": {
+  "from": "похож на maru.tsybulevskaya",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "kseniya_torbina": {
+  "from": "похож на yana_bakara",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "shamatava_irina": {
+  "from": "похож на yana_bakara",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "lera.kudryavceva_photo": {
+  "from": "похож на yana_bakara",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "zagida.al": {
+  "from": "похож на yana_bakara",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "tomtosova_veronika": {
+  "from": "похож на yana_bakara",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "kristina_bozhidaeva": {
+  "from": "похож на yana_bakara",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "anastaz_ananaz": {
+  "from": "похож на yana_bakara",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "ariadna_novikova": {
+  "from": "похож на yana_bakara",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "vvooodooo": {
+  "from": "похож на yana_bakara",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "ohikris_": {
+  "from": "похож на yana_bakara",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "naymusha_": {
+  "from": "похож на yana_bakara",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "i_am_regina_n": {
+  "from": "похож на yana_bakara",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "oh.eeveea": {
+  "from": "похож на yana_bakara",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "lianavibee": {
+  "from": "похож на yana_bakara",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "alla_symaka": {
+  "from": "похож на yana_bakara",
+  "added": "2026-11-01T13:55:58+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "dibeststyle": {
+  "from": "найден",
+  "added": "2026-11-01T15:22:39+00:00",
+  "hits": 0,
+  "best": 1.0,
+  "lastChecked": "2026-11-01T15:22:39+00:00",
+  "views": [
+   3694
+  ]
+ },
+ "banaishchik": {
+  "from": "найден",
+  "added": "2026-11-01T15:24:04+00:00",
+  "hits": 0,
+  "best": 2.0,
+  "lastChecked": "2026-11-01T15:24:04+00:00",
+  "views": [
+   954785
+  ]
+ },
+ "russianhospitalityawards_rest": {
+  "from": "найден",
+  "added": "2026-11-01T19:14:13+00:00",
+  "hits": 0,
+  "best": 4.5,
+  "lastChecked": "2026-11-01T19:14:13+00:00",
+  "views": [
+   1918
+  ]
+ },
+ "mediafokusdon": {
+  "from": "найден",
+  "added": "2026-11-01T19:15:39+00:00",
+  "hits": 0,
+  "best": 2.0,
+  "lastChecked": "2026-11-01T19:15:39+00:00",
+  "views": [
+   4662
   ]
  }
 }
