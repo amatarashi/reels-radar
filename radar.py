@@ -168,10 +168,14 @@ PROMPT = STYLE + """
 """
 
 
+QUOTA = "quota"  # gemini() вернёт это, когда кончился дневной лимит
+
+
 def gemini(parts):
     body = {"contents": [{"parts": parts}],
             "generationConfig": {"responseMimeType": "application/json", "temperature": 0.2,
                                  "mediaResolution": "MEDIA_RESOLUTION_LOW"}}
+    limited = 0
     for attempt in range(6):
         model = MODELS[attempt % len(MODELS)]
         try:
@@ -188,9 +192,11 @@ def gemini(parts):
                 print(f"Gemini {model}: непонятный ответ", file=sys.stderr)
                 continue
         print(f"Gemini {model}: {r.status_code}", file=sys.stderr)
+        limited += r.status_code == 429
         # 429 — минутный лимит бесплатного тарифа, ждём, пока он сбросится
         time.sleep(65 if r.status_code == 429 else 15)
-    return None
+    # все попытки упёрлись в 429 — это уже дневной лимит, ждать бесполезно
+    return QUOTA if limited == 6 else None
 
 
 def fetch(url, cap):
@@ -219,6 +225,8 @@ def score_reel(item):
             return None
         media = {"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(img).decode()}}
     res = gemini([media, {"text": PROMPT + f"\n\nПодпись к рилсу:\n{caption}"}])
+    if res == QUOTA:
+        return res
     if res and not res.get("talking_head", True):
         res["score"] = min(float(res.get("score", 0)), 3)
     return res
@@ -277,10 +285,14 @@ def main():
         by_author.setdefault(it.get("ownerUsername", "").lower(), []).append(it)
 
     scored = added = 0
+    quota = False
     for handle, reels in by_author.items():
+        if quota:
+            break
         if handle in gone:
             continue
         a = authors.setdefault(handle, {"from": "найден", "added": now(), "hits": 0, "best": None})
+        prev = a.get("lastChecked")
         a["lastChecked"] = now()
         views = [r.get("videoPlayCount") or r.get("videoViewCount") or 0 for r in reels]
         a["views"] = sorted(set(a.get("views", []) + views))[-30:]
@@ -295,6 +307,9 @@ def main():
             except Exception as e:
                 print(f"{code}: {e!r}", file=sys.stderr)
                 res = None
+            if res == QUOTA:
+                quota = True
+                break
             scored += 1
             time.sleep(15)
             if not res:
@@ -318,11 +333,17 @@ def main():
             a["hits"] = a.get("hits", 0) + 1
             added += 1
             save("refs.json", refs)
+        if quota:
+            # не досмотрели — пусть проверится в следующий раз
+            if prev:
+                a["lastChecked"] = prev
+            else:
+                a.pop("lastChecked")
         save("authors.json", authors)
         save("seen.json", seen)
 
     for handle in fresh:
-        if handle not in by_author:
+        if handle not in by_author and not quota:
             authors[handle]["lastChecked"] = now()
             authors[handle]["note"] = "рилсы не найдены (закрыт или нет такого ника)"
 
@@ -334,7 +355,8 @@ def main():
         gone.add(handle)
 
     state.update(lastRun=now(), checked=len(by_author), scored=scored, added=added,
-                 apifyUsd=round(apify_usage(), 2), note="")
+                 apifyUsd=round(apify_usage(), 2),
+                 note="Дневной лимит Gemini кончился — продолжу завтра" if quota else "")
     save("authors.json", authors)
     save("refs.json", refs)
     save("seen.json", seen)
