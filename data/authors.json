@@ -376,20 +376,43 @@
  "nebledny": {
   "from": "кандидат",
   "added": "2026-10-31T00:00:00+00:00",
-  "hits": 1,
+  "hits": 5,
   "best": 8.0,
-  "lastChecked": "2026-11-02T21:28:15+00:00",
+  "lastChecked": "2026-11-03T15:50:52+00:00",
   "views": [
-   3,
+   571,
+   1701,
    1795,
+   1812,
+   1872,
+   2065,
+   2200,
+   2576,
+   2972,
+   3034,
+   3348,
+   3510,
+   4018,
+   4229,
+   4625,
+   4806,
    5404,
+   6348,
+   19844,
+   118468,
+   164631,
    894316,
    894357,
+   894373,
    1121278,
    1121328,
+   1121344,
    1630864,
-   1633171
-  ]
+   1633171,
+   1634623
+  ],
+  "expanded": "2026-11-03T14:46:18+00:00",
+  "deep": "2026-11-03T14:48:04+00:00"
  },
  "yanadlx": {
   "from": "кандидат",
@@ -666,45 +689,84 @@
  "maru.tsybulevskaya": {
   "from": "похож на ne_slavik",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 3,
-  "best": 8.0,
-  "lastChecked": "2026-11-01T01:23:46+00:00",
+  "hits": 9,
+  "best": 9.5,
+  "lastChecked": "2026-11-03T14:59:03+00:00",
   "views": [
    128,
+   129,
    246,
+   254,
+   684,
    957,
+   1008,
    1461,
+   1609,
+   1619,
+   1773,
+   1866,
+   2241,
+   2940,
    2994,
+   3400,
    5059,
+   5649,
    7383,
+   8144,
+   19817,
+   55302,
    76575,
+   76773,
    893441,
+   893638,
    1351280,
-   3072420
+   1469365,
+   3072420,
+   3072682
   ],
-  "expanded": "2026-11-01T13:55:58+00:00"
+  "expanded": "2026-11-01T13:55:58+00:00",
+  "deep": "2026-11-03T14:48:04+00:00"
  },
  "anna.ievleva.buh": {
   "from": "похож на ne_slavik",
   "added": "2026-10-31T23:02:00+00:00",
   "hits": 1,
   "best": 9.5,
-  "lastChecked": "2026-11-01T03:28:42+00:00",
+  "lastChecked": "2026-11-03T15:19:22+00:00",
   "views": [
    0,
    2,
    4,
+   111,
+   121,
    132,
    147,
+   150,
+   169,
    175,
+   250,
+   315,
    927,
+   1051,
    1177,
+   1300,
+   1706,
+   1788,
    1869,
    1919,
+   2020,
+   2032,
    2250,
-   2687
+   2373,
+   2687,
+   2904,
+   4144,
+   4490,
+   6344,
+   14123
   ],
-  "expanded": "2026-11-01T13:55:58+00:00"
+  "expanded": "2026-11-01T13:55:58+00:00",
+  "deep": "2026-11-03T14:48:04+00:00"
  },
  "malllkova": {
   "from": "похож на ne_slavik",
@@ -730,46 +792,83 @@
  "pavlovairyna": {
   "from": "похож на ne_slavik",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 4,
+  "hits": 5,
   "best": 9.0,
-  "lastChecked": "2026-11-01T03:12:16+00:00",
+  "lastChecked": "2026-11-03T16:27:34+00:00",
   "views": [
-   1,
-   9,
+   18,
+   25,
    109,
+   173,
+   247,
    292,
+   309,
+   425,
    445,
    449,
+   463,
    510,
    513,
+   525,
+   547,
+   564,
+   862,
+   863,
+   1175,
+   1234,
+   1770,
    3096,
+   3160,
    3992,
+   3996,
+   6934,
    7257,
-   78676
+   7377,
+   78676,
+   81386
   ],
-  "expanded": "2026-11-01T13:55:58+00:00"
+  "expanded": "2026-11-01T13:55:58+00:00",
+  "deep": "2026-11-03T14:48:04+00:00"
  },
  "_bozhinskaya": {
   "from": "похож на ne_slavik",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 1,
+  "hits": 4,
   "best": 9.5,
-  "lastChecked": "2026-11-01T18:38:00+00:00",
+  "lastChecked": "2026-11-03T14:48:04+00:00",
   "views": [
    0,
+   7,
+   12,
+   17,
+   36,
    131,
+   138,
    140,
    352,
    607,
+   635,
    760,
+   806,
+   1104,
+   1155,
+   1220,
    1275,
    1567,
+   1590,
+   1849,
    2191,
+   2209,
+   4203,
    14796,
+   14824,
    235118,
-   701696
+   235154,
+   701696,
+   703278
   ],
-  "expanded": "2026-11-02T16:42:43+00:00"
+  "expanded": "2026-11-02T16:42:43+00:00",
+  "deep": "2026-11-03T14:48:04+00:00"
  },
  "anna_dainty": {
   "from": "похож на ne_slavik",
@@ -875,7 +974,8 @@
    294687,
    603926,
    2691908
-  ]
+  ],
+  "expanded": "2026-11-03T14:46:18+00:00"
  },
  "s_golovoj": {
   "from": "похож на yanadlx",
@@ -961,7 +1061,8 @@
    119725,
    166318,
    264663
-  ]
+  ],
+  "expanded": "2026-11-03T14:46:18+00:00"
  },
  "anna_pavluk": {
   "from": "похож на yanadlx",
@@ -982,7 +1083,8 @@
    12063,
    22532,
    114019
-  ]
+  ],
+  "expanded": "2026-11-03T14:46:18+00:00"
  },
  "marikitayova": {
   "from": "похож на yanadlx",
@@ -1003,7 +1105,8 @@
    28781,
    42979,
    1366746
-  ]
+  ],
+  "expanded": "2026-11-03T14:46:18+00:00"
  },
  "eeliseevalisa": {
   "from": "похож на yanadlx",
@@ -1024,7 +1127,8 @@
    13889,
    19413,
    70003
-  ]
+  ],
+  "expanded": "2026-11-03T14:46:18+00:00"
  },
  "ilenavass": {
   "from": "похож на yanadlx",
@@ -1045,7 +1149,8 @@
    43537,
    73853,
    4415984
-  ]
+  ],
+  "expanded": "2026-11-03T14:46:18+00:00"
  },
  "design.soroka": {
   "from": "похож на yanadlx",
@@ -1066,7 +1171,8 @@
    19004,
    23973,
    54006
-  ]
+  ],
+  "expanded": "2026-11-03T14:46:18+00:00"
  },
  "iznutri.agency": {
   "from": "похож на yanadlx",
@@ -1087,7 +1193,8 @@
    14685,
    17673,
    23868
-  ]
+  ],
+  "expanded": "2026-11-03T14:46:18+00:00"
  },
  "re.fresh_education": {
   "from": "похож на yanadlx",
@@ -1108,7 +1215,8 @@
    5114,
    5734,
    13347
-  ]
+  ],
+  "expanded": "2026-11-03T14:46:18+00:00"
  },
  "synchronize_art": {
   "from": "похож на alexandramitroshina",
@@ -1129,7 +1237,8 @@
    181709,
    299662,
    369158
-  ]
+  ],
+  "expanded": "2026-11-03T14:46:18+00:00"
  },
  "sedakasparova": {
   "from": "похож на alexandramitroshina",
@@ -1150,19 +1259,50 @@
    628992,
    10233514,
    12416188
-  ]
+  ],
+  "expanded": "2026-11-03T14:46:18+00:00"
  },
  "evdklar": {
   "from": "похож на alexandramitroshina",
   "added": "2026-10-31T23:02:00+00:00",
   "hits": 0,
-  "best": null
+  "best": 4.0,
+  "lastChecked": "2026-11-03T17:44:43+00:00",
+  "views": [
+   398,
+   1754,
+   13028,
+   43610,
+   47560,
+   64054,
+   76898,
+   102940,
+   106688,
+   116143,
+   193306,
+   294777
+  ]
  },
  "reira_reira_official_": {
   "from": "похож на alexandramitroshina",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 0,
-  "best": null
+  "hits": 11,
+  "best": 9.5,
+  "lastChecked": "2026-11-03T19:06:55+00:00",
+  "views": [
+   70248,
+   71373,
+   91025,
+   162408,
+   181835,
+   216784,
+   245162,
+   254763,
+   299782,
+   356603,
+   951977,
+   1620679
+  ]
  },
  "alexandramitroshina_life": {
   "from": "похож на alexandramitroshina",
@@ -1173,32 +1313,108 @@
  "danyavollk": {
   "from": "похож на alexandramitroshina",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 0,
-  "best": null
+  "hits": 5,
+  "best": 8.0,
+  "lastChecked": "2026-11-03T18:16:25+00:00",
+  "views": [
+   18502,
+   48043,
+   48466,
+   63953,
+   71218,
+   72820,
+   108121,
+   185421,
+   232666,
+   238903,
+   242900,
+   349534,
+   384339
+  ]
  },
  "tysya": {
   "from": "похож на alexandramitroshina",
   "added": "2026-10-31T23:02:00+00:00",
   "hits": 0,
-  "best": null
+  "best": 3.0,
+  "lastChecked": "2026-11-03T18:38:17+00:00",
+  "views": [
+   38703,
+   43930,
+   83711,
+   89512,
+   90899,
+   108184,
+   118221,
+   185463,
+   193359,
+   230620,
+   256475,
+   270597
+  ]
  },
  "art.senatorov": {
   "from": "похож на alexandramitroshina",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 0,
-  "best": null
+  "hits": 12,
+  "best": 9.5,
+  "lastChecked": "2026-11-03T19:44:37+00:00",
+  "views": [
+   13815,
+   73348,
+   109426,
+   120479,
+   124404,
+   184267,
+   287894,
+   302377,
+   657662,
+   6400909,
+   7958128,
+   10133013
+  ]
  },
  "marinamogilko": {
   "from": "похож на alexandramitroshina",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 0,
-  "best": null
+  "hits": 3,
+  "best": 10.0,
+  "lastChecked": "2026-11-03T17:14:42+00:00",
+  "views": [
+   712,
+   58908,
+   61939,
+   95462,
+   108027,
+   111306,
+   113950,
+   159882,
+   198499,
+   1966531,
+   2779692,
+   3514762
+  ]
  },
  "oskar_hartmann": {
   "from": "похож на mikhail.timochko",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 0,
-  "best": null
+  "hits": 1,
+  "best": 9.0,
+  "lastChecked": "2026-11-03T16:48:06+00:00",
+  "views": [
+   1930,
+   2982,
+   4640,
+   25929,
+   26676,
+   106793,
+   505518,
+   813184,
+   913710,
+   3278745,
+   5484245,
+   15146751
+  ]
  },
  "misterr_alex": {
   "from": "похож на mikhail.timochko",
@@ -1215,8 +1431,23 @@
  "anarbachoo": {
   "from": "похож на mikhail.timochko",
   "added": "2026-10-31T23:02:00+00:00",
-  "hits": 0,
-  "best": null
+  "hits": 12,
+  "best": 10.0,
+  "lastChecked": "2026-11-03T19:25:27+00:00",
+  "views": [
+   1463,
+   2910,
+   3486,
+   4197,
+   5471,
+   28833,
+   64694,
+   68283,
+   68525,
+   78992,
+   1241294,
+   1705279
+  ]
  },
  "grebenuk.m": {
   "from": "похож на mikhail.timochko",
@@ -1863,6 +2094,300 @@
  "pekur.v": {
   "from": "похож на s_golovoj",
   "added": "2026-11-02T16:42:43+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "wave.smm": {
+  "from": "похож на iznutri.agency",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "da.connection": {
+  "from": "похож на iznutri.agency",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "visual.advice": {
+  "from": "похож на iznutri.agency",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "hopegroup.blog": {
+  "from": "похож на iznutri.agency",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "senscollective": {
+  "from": "похож на iznutri.agency",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "zhirnova.mary": {
+  "from": "похож на iznutri.agency",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "marketing.education": {
+  "from": "похож на iznutri.agency",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "sence.prod": {
+  "from": "похож на iznutri.agency",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "beton.digital.agency": {
+  "from": "похож на iznutri.agency",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "alenafedra": {
+  "from": "похож на iznutri.agency",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "o.smisle": {
+  "from": "похож на iznutri.agency",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "avantiina.agency": {
+  "from": "похож на iznutri.agency",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "azorina_design": {
+  "from": "похож на iznutri.agency",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "setters.inside": {
+  "from": "похож на iznutri.agency",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "design___wonderland": {
+  "from": "похож на iznutri.agency",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "mads_courses": {
+  "from": "похож на re.fresh_education",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "vrekmedia": {
+  "from": "похож на re.fresh_education",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "mindbox.ru": {
+  "from": "похож на re.fresh_education",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "evabatalovaaa": {
+  "from": "похож на re.fresh_education",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "vera_vinchik": {
+  "from": "похож на re.fresh_education",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "prisenkoan": {
+  "from": "похож на re.fresh_education",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "yandex.business": {
+  "from": "похож на re.fresh_education",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "reginakhmetova": {
+  "from": "похож на re.fresh_education",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "popimilk": {
+  "from": "похож на re.fresh_education",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "kirienamiss": {
+  "from": "похож на re.fresh_education",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "lilynikolaeva": {
+  "from": "похож на re.fresh_education",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "belinkovna": {
+  "from": "похож на re.fresh_education",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "allagespage": {
+  "from": "похож на re.fresh_education",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "alxyrgin": {
+  "from": "похож на re.fresh_education",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "albella__": {
+  "from": "похож на re.fresh_education",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "markbarton_mb": {
+  "from": "похож на sedakasparova",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "shelusha_food": {
+  "from": "похож на sedakasparova",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "dr.alexeysitnikov": {
+  "from": "похож на sedakasparova",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "doctor_zubareva_lab": {
+  "from": "похож на sedakasparova",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "irina_hakamada": {
+  "from": "похож на sedakasparova",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "psycholog.alexandr.shahov": {
+  "from": "похож на sedakasparova",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "pavelgitelman": {
+  "from": "похож на sedakasparova",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "feodoridy": {
+  "from": "похож на sedakasparova",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "golos_mozhet": {
+  "from": "похож на sedakasparova",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "laskavaya.school": {
+  "from": "похож на sedakasparova",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "korolgovorit": {
+  "from": "похож на sedakasparova",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "maria.brazgovskaia": {
+  "from": "похож на sedakasparova",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "labkovskiyofficial": {
+  "from": "похож на sedakasparova",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "doctor_zubareva": {
+  "from": "похож на sedakasparova",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "yasno.live": {
+  "from": "похож на synchronize_art",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "aaa.magazine": {
+  "from": "похож на synchronize_art",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "pod.skazkii": {
+  "from": "похож на synchronize_art",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "eto.znak.mag": {
+  "from": "похож на synchronize_art",
+  "added": "2026-11-03T14:46:18+00:00",
+  "hits": 0,
+  "best": null
+ },
+ "snob_official": {
+  "from": "похож на synchronize_art",
+  "added": "2026-11-03T14:46:18+00:00",
   "hits": 0,
   "best": null
  }
